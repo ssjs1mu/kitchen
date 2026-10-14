@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joshi's Corner · Kitchen Manual</title>
+<style>
+:root{--bg:#c9f0dc;--panel:#f2fcf7;--line:#8fcaa9;--text:#10281c;--muted:#3f6552;--gold:#a87400;--brand:#e8b73b;--teal:#0b6f63;--veg:#1f7a38}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:17px/1.55 Georgia,"Iowan Old Style",serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+h1,h2,h3,button,input,th,.tag{font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif}
+header{padding:18px max(16px,calc((100% - 1200px)/2)) 14px;background:#0e2a1c;color:#d7efe2;position:relative}
+h1{margin:0;font-size:1.6rem;color:var(--gold)}
+header p{margin:2px 0 0;color:var(--muted);font-size:.95rem}
+.veg{display:inline-block;width:14px;height:14px;border:2px solid var(--veg);border-radius:2px;position:relative;vertical-align:middle;margin-right:6px}
+.veg:after{content:"";position:absolute;inset:2px;background:var(--veg);border-radius:50%}
+.controls{max-width:1200px;margin:auto;padding:8px 16px;position:sticky;top:0;background:var(--bg);z-index:5}
+#q{width:100%;padding:14px 16px;font-size:1.05rem;border:2px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text)}
+#q:focus,button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+#cats{display:flex;gap:8px;overflow-x:auto;padding:10px 0 4px}
+#cats button{flex:none;min-height:44px;padding:0 18px;border-radius:22px;border:2px solid var(--line);background:var(--panel);color:var(--text);font-size:1rem;cursor:pointer}
+#cats button[aria-pressed=true]{background:var(--gold);color:#1a1205;border-color:var(--gold);font-weight:700}
+main{max-width:1200px;margin:auto;padding:8px 16px 40px}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-align:left;color:inherit;cursor:pointer;padding:0;font:inherit}
+.card:hover{border-color:var(--gold)}
+.ph{aspect-ratio:4/3;background:linear-gradient(135deg,#b4e3c8,#e6f8ee);display:grid;place-items:center;font-size:2.6rem;color:var(--gold);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.card .b{padding:12px 14px 14px}
+.card h3{margin:0 0 2px;font-size:1.15rem}
+.tag{color:var(--muted);font-size:.9rem}
+.times{margin-top:8px;display:flex;gap:14px;font-family:"Trebuchet MS",system-ui,sans-serif;font-size:.95rem}
+#empty{color:var(--muted);padding:30px 0}
+dialog{width:min(900px,100%);max-height:100dvh;height:100dvh;margin:0 0 0 auto;padding:0;border:0;background:var(--bg);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+@media (min-width:900px){dialog{border-left:2px solid var(--gold)}}
+.dh{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+.dh h2{margin:0;font-size:1.35rem}
+#close{min-height:48px;min-width:48px;font-size:1.4rem;border:2px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;cursor:pointer}
+.db{padding:16px}
+.db section{margin-bottom:24px}
+.db h3{color:var(--gold);margin:0 0 8px;font-size:1.05rem}
+table{width:100%;border-collapse:collapse;font-size:1rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+td.p{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+td.na{color:var(--muted);font-weight:400}
+ol{padding-left:1.3em}ol li{margin-bottom:8px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.fact{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.fact b{display:block;font:700 1.25rem "Trebuchet MS",system-ui,sans-serif}
+.fact span{color:var(--muted);font-size:.88rem}
+.warn{border-left:4px solid var(--teal)}
+.vid{aspect-ratio:16/9;width:100%;border:0;border-radius:10px}
+.btn{display:inline-block;min-height:48px;line-height:48px;padding:0 20px;background:var(--gold);color:#1a1205;border-radius:10px;font:700 1rem "Trebuchet MS",system-ui,sans-serif;text-decoration:none}
+
+.bar{max-width:1200px;margin:auto;padding:4px 16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bar button,.acts button:not(.btn),#edit{min-height:44px;padding:0 14px;border:2px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font:600 .95rem "Trebuchet MS",system-ui,sans-serif;cursor:pointer}
+.bar #b-xlsx{background:var(--gold);color:#1a1205;border-color:var(--gold)}
+.status{flex-basis:100%;min-height:1.4em;color:var(--teal);font:.95rem "Trebuchet MS",system-ui,sans-serif}
+.form{display:grid;gap:14px}
+.form label{display:grid;gap:4px;font:600 .92rem "Trebuchet MS",system-ui,sans-serif;color:var(--muted)}
+.form input,.form textarea{padding:11px 12px;font:1rem Georgia,serif;border:2px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);width:100%}
+.form fieldset{border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:12px}
+.form legend{color:var(--gold);font:700 1rem "Trebuchet MS",system-ui,sans-serif;padding:0 6px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.acts{display:flex;flex-wrap:wrap;gap:10px;position:sticky;bottom:0;background:var(--bg);padding:10px 0}
+.acts .btn{border:0;cursor:pointer}.danger{color:#e5604d!important;margin-left:auto}
+.tr{display:block}.en{display:block;color:var(--muted);font-size:.8em;font-weight:400;font-family:"Trebuchet MS",system-ui,sans-serif}
+.lg{display:inline-flex;gap:8px;align-items:center;margin-top:8px;font:600 .95rem "Trebuchet MS",system-ui,sans-serif;color:var(--muted)}
+.lg select{min-height:44px;padding:0 12px;font-size:1rem;border:2px solid var(--gold);border-radius:10px;background:var(--panel);color:var(--text)}
+.vb{margin-bottom:18px}.vb h4{margin:0 0 6px;font:700 1rem "Trebuchet MS",system-ui,sans-serif}
+.brand{font-family:"Brush Script MT","Brush Script Std","Lucida Handwriting",cursive;font-weight:400;font-style:italic;color:var(--brand);font-size:clamp(2.4rem,8vw,3.5rem);line-height:1.1;margin:0}
+.brand.sm{font-size:2.6rem;text-align:center}
+.sb{font:600 .78rem "Trebuchet MS",system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#b9dcc8}
+header p,.lg{color:#b9dcc8}
+#so{position:absolute;top:14px;right:16px;min-height:40px;padding:0 14px;border-radius:10px;border:2px solid var(--brand);background:transparent;color:var(--brand);font:700 .9rem "Trebuchet MS",system-ui,sans-serif;cursor:pointer}
+body.locked .controls,body.locked main,body.locked .bar{display:none}
+body.viewer .bar{display:none}
+.gonly{display:none!important}body.admin .gonly{display:inline-block!important}
+#auth,#ud{max-width:440px;width:100%;margin:auto;height:auto;max-height:100dvh;border:2px solid var(--brand);border-radius:14px}
+@media print{.controls,#close{display:none}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="config.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+<header>
+  <h1 class="brand"><span class="veg" title="Pure vegetarian"></span>Joshi's Corner</h1><div class="sb">Kitchen Manual</div><button id="so" hidden>Sign out</button>
+  <p id="sub">Recipes, prep steps, storage and prices for the pure-veg kitchen.</p>
+  <label class="lg">Language / भाषा / ভাষা <select id="lang"><option value="en">English</option><option value="hi">हिन्दी (Hindi)</option><option value="bn">বাংলা (Bengali)</option></select></label>
+</header>
+<div class="bar">
+ <button id="b-xlsx">Import Excel</button><button id="b-tpl">Excel template</button><button id="b-users" class="gonly">Viewer accounts</button><button id="b-add">Add dish</button><button id="b-pics">Bulk photos</button><button id="b-zip">Photos ZIP</button><button id="b-save">Save menu file</button><button id="b-load">Load menu file</button><button id="b-pend">Dishes needing recipes</button><button id="b-reset">Reset</button>
+ <input type="file" id="f-xlsx" accept=".xlsx,.xls,.csv" hidden><input type="file" id="f-json" accept=".json" hidden><input type="file" id="f-pics" accept="image/*" multiple hidden>
+ <div id="status" class="status" role="status"></div>
+</div>
+<datalist id="cl"></datalist>
+<div class="controls">
+  <input id="q" type="search" placeholder="Search by dish or ingredient" aria-label="Search dishes or ingredients" autocomplete="off">
+  <div id="cats" role="group" aria-label="Categories"></div>
+</div>
+<main><div id="grid"></div><div id="empty" hidden>No dish matches. Clear the search or pick All.</div></main>
+
+<dialog id="auth"><form id="af" class="form" style="padding:20px">
+ <h2 class="brand sm" style="color:var(--gold)">Joshi's Corner</h2><p id="a-msg" class="tag"></p>
+ <label>Username<input name="u" autocomplete="username"></label>
+ <label>Password<input name="p" type="password" autocomplete="current-password"></label>
+ <button class="btn" type="submit" style="border:0;cursor:pointer">Sign in</button>
+ <button type="button" id="g-admin" style="min-height:48px;border:2px solid var(--gold);border-radius:10px;background:var(--panel);color:var(--text);font:700 1rem 'Trebuchet MS',system-ui,sans-serif;cursor:pointer">Admin: sign in with Google</button>
+ <p class="tag">Admin: type the admin passphrase above, then press the Google button.</p>
+ <div id="aerr" class="status" role="alert"></div></form></dialog>
+<dialog id="ud"><div class="dh"><h2>Viewer accounts</h2><button id="ud-x" style="min-height:48px;min-width:48px;border:2px solid var(--line);background:var(--panel);color:var(--text);border-radius:10px;cursor:pointer">✕</button></div><div class="db">
+ <p class="tag">Viewers can only look. They cannot edit, add or delete anything.</p><div id="ul" class="facts" style="grid-template-columns:1fr"></div>
+ <form id="uf" class="form" style="margin-top:14px"><label>New username<input name="n" required></label><label>Password (8+ characters)<input name="p" type="password" minlength="8" required></label><button class="btn" type="submit" style="border:0;cursor:pointer">Create viewer</button></form>
+ <p><button id="u-reset" class="danger" style="min-height:44px;border:2px solid var(--line);border-radius:10px;background:var(--panel);cursor:pointer">Remove all viewers and change the access key</button></p>
+ <div id="um" class="status" role="status"></div></div></dialog>
+<dialog id="dlg" aria-labelledby="dt">
+  <div class="dh"><h2 id="dt"></h2><button id="edit" hidden>Edit</button><button id="close" aria-label="Close">✕</button></div>
+  <div class="db" id="body"></div>
+</dialog>
+
+<script>
+const TIERS=[
+ ["price_ground_floor","Ground floor (dine-in)"],
+ ["price_mezzanine_floor","Mezzanine / Adda (dine-in)"],
+ ["price_online","Online / aggregator"],
+ ["price_ground_breakfast","Ground floor breakfast"],
+ ["price_mezzanine_breakfast","Mezzanine breakfast"],
+ ["price_staff","Staff"]
+];
+let DATA=[],cat="All",term="";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num=v=>{if(v==null||v==="")return null;const n=parseFloat(String(v).replace(/[₹,\s]/g,""));return isNaN(n)?null:n};
+const rupee=v=>v==null?`<td class="p na">${T("Not set")}</td>`:`<td class="p">₹${Number(v).toLocaleString("en-IN")}</td>`;
+const note=m=>{$("#status").textContent=m};
+const pending=d=>!d.original_recipe||!d.original_recipe.length;
+const slug=n=>String(n).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const norm=n=>String(n).toLowerCase().replace(/[^a-z0-9]/g,"");
+/* language: translations are looked up by the exact English sentence */
+let LANG="en",TR={};
+let MODE="local",ROLE="admin",ADMPW=null;const canEdit=()=>MODE==="local"||ROLE==="admin";
+try{LANG=localStorage.getItem("lang")||"en"}catch(e){}
+const tr=s=>LANG!=="en"&&TR.map&&TR.map[s]||null;
+const T=s=>tr(s)||s;
+const bi=s=>{const t=tr(s);return t?`<span class="tr">${esc(t)}</span><span class="en">${esc(s)}</span>`:esc(s)};
+function ingName(n){const t=tr(n);if(t)return bi(n);if(LANG==="en"||!TR.terms)return esc(n);const l=n.toLowerCase();let b="";for(const k in TR.terms)if(l.includes(k)&&k.length>b.length)b=k;return b?`<span class="tr">${esc(TR.terms[b])}</span><span class="en">${esc(n)}</span>`:esc(n)}
+async function loadLang(l){LANG=l;try{localStorage.setItem("lang",l)}catch(e){}TR={};
+ if(l!=="en"){try{TR=await(await fetch(`i18n/${l}.json`)).json()}catch(e){note("Translation file i18n/"+l+".json not found.")}}
+ $("#sub").textContent=T("Recipes, prep steps, storage and prices for the pure-veg kitchen.");$("#q").placeholder=T("Search by dish or ingredient");
+ renderCats();renderGrid();if($("#dlg").open&&cur&&!document.querySelector("#f"))view(cur)}
+
+/* storage: IndexedDB keeps the menu and uploaded pictures in this browser */
+const DB={open(){return new Promise((ok,no)=>{const r=indexedDB.open("jc-kitchen",1);r.onupgradeneeded=()=>r.result.createObjectStore("kv");r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})},
+ async get(){const db=await this.open();return new Promise(ok=>{const q=db.transaction("kv").objectStore("kv").get("dishes");q.onsuccess=()=>ok(q.result);q.onerror=()=>ok(null)})},
+ async set(v){const db=await this.open();return new Promise(ok=>{const t=db.transaction("kv","readwrite");t.objectStore("kv").put(v,"dishes");t.oncomplete=()=>ok()})}};
+async function persist(){if(MODE==="local"){try{await DB.set(DATA)}catch(e){note("Could not save in this browser. Use Save menu file.")}}else if(ROLE==="admin")schedPush()}
+function changed(msg){renderCats();renderGrid();persist();note(msg)}
+
+function nextId(){const m=Math.max(0,...DATA.map(d=>parseInt(String(d.id).replace(/\D/g,""))||0));return "item_"+String(m+1).padStart(3,"0")}
+function blank(name){return{id:nextId(),name,category:"Uncategorised",description:"",image_url:"",price_ground_floor:null,price_mezzanine_floor:null,price_online:null,price_ground_breakfast:null,price_mezzanine_breakfast:null,price_staff:null,original_recipe:[],prep_guidelines:[],prep_time:null,cook_time:null,calories:null,shelf_life:"",storage_conditions:"",youtube_reference_url:"",video_urls:[]}}
+function getVideos(d){const a=(d.video_urls||[]).filter(v=>v&&v.url);if(a.length)return a;return d.youtube_reference_url?[{label:"Training video",url:d.youtube_reference_url}]:[]}
+function parseUrls(x){return String(x||"").split(/[\s,;]+/).filter(u=>/^https?:\/\//.test(u)).map((u,i)=>({label:"Video "+(i+1),url:u}))}
+function merge(dst,src){for(const k in src){if(k==="id")continue;const v=src[k];if(v==null||v===""||(Array.isArray(v)&&!v.length))continue;
+ if(k==="video_urls"){const c=getVideos(dst),seen=new Set(c.map(x=>x.url));dst.video_urls=[...c,...v.filter(x=>x&&x.url&&!seen.has(x.url))];continue}
+ dst[k]=v}}
+const find=n=>DATA.find(x=>x.name.toLowerCase()===String(n).trim().toLowerCase());
+
+/* Excel */
+function mapHeader(h){const k=String(h).toLowerCase().replace(/[^a-z]/g,"");
+ if(/video|youtube|link/.test(k))return"youtube_reference_url";
+ if(/breakfast/.test(k))return/mezz|adda|game/.test(k)?"price_mezzanine_breakfast":"price_ground_breakfast";
+ if(/staff/.test(k))return"price_staff";
+ if(/online|deliver|aggregat|zomato|swiggy/.test(k))return"price_online";
+ if(/mezz|adda|game/.test(k))return"price_mezzanine_floor";
+ if(/ground/.test(k))return"price_ground_floor";
+ if(/categ|section|group/.test(k))return"category";
+ if(/item|name|dish/.test(k))return"name";
+ return null}
+function importXlsx(file){const fr=new FileReader();fr.onload=()=>{
+ try{const wb=XLSX.read(fr.result,{type:"array"});let add=0,upd=0,skip=0;
+ wb.SheetNames.forEach(sn=>{XLSX.utils.sheet_to_json(wb.Sheets[sn],{defval:""}).forEach(row=>{
+  const r={};for(const h in row){const k=mapHeader(h);if(k==="youtube_reference_url")r[k]=(r[k]||"")+" "+row[h];else if(k&&r[k]===undefined)r[k]=row[h]}
+  const name=String(r.name||"").trim();if(!name){skip++;return}
+  const inc={category:String(r.category||"").trim()||(wb.SheetNames.length>1?sn:""),video_urls:parseUrls(r.youtube_reference_url)};
+  TIERS.forEach(([k])=>inc[k]=num(r[k]));
+  let d=find(name);if(d){merge(d,inc);upd++}else{d=blank(name);merge(d,inc);DATA.push(d);add++}})});
+ changed(`Excel imported: ${add} added, ${upd} updated, ${skip} empty rows skipped.`)}
+ catch(e){note("Could not read that file. Use the Excel template.")}};
+ fr.readAsArrayBuffer(file)}
+function template(){const wb=XLSX.utils.book_new();
+ const ws=XLSX.utils.aoa_to_sheet([["Item","Category","Ground Floor","Mezzanine","Online","Ground Breakfast","Mezzanine Breakfast","Staff","Video Link"],
+  ["Poha","Breakfast",155,190,"",95,125,"",""],["American Corn Chaat","Chaat",135,205,"","","","",""]]);
+ XLSX.utils.book_append_sheet(wb,ws,"Menu");XLSX.writeFile(wb,"menu-template.xlsx")}
+function download(name,obj){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:"application/json"}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function loadJson(file){const fr=new FileReader();fr.onload=()=>{try{const arr=JSON.parse(fr.result);let add=0,upd=0;
+ arr.forEach(i=>{if(!i.name)return;let d=find(i.name);if(d){merge(d,i);upd++}else{d=blank(i.name);merge(d,i);DATA.push(d);add++}});
+ changed(`Menu file loaded: ${add} added, ${upd} updated.`)}catch(e){note("That file is not valid menu JSON.")}};fr.readAsText(file)}
+function toDataUrl(file){return new Promise(ok=>{const im=new Image();im.onload=()=>{const s=Math.min(1,800/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*s;c.height=im.height*s;c.getContext("2d").drawImage(im,0,0,c.width,c.height);ok(c.toDataURL("image/jpeg",.8))};im.src=URL.createObjectURL(file)})}
+
+/* view */
+function ytEmbed(u){try{const x=new URL(u);
+ if(x.hostname.includes("youtu.be"))return "https://www.youtube.com/embed/"+x.pathname.slice(1);
+ if(x.hostname.includes("youtube.com")){if(x.pathname==="/watch"&&x.searchParams.get("v"))return "https://www.youtube.com/embed/"+x.searchParams.get("v");if(x.pathname.startsWith("/embed/"))return u}}catch(e){}return null}
+const img=d=>`<div class="ph"><img src="${esc(d.image_url||"assets/images/"+slug(d.name)+".jpg")}" alt="${esc(d.name)}" loading="lazy" onerror="this.remove()"><span aria-hidden="true">${esc(d.name[0]||"?")}</span></div>`;
+function renderCats(){const cats=["All",...new Set(DATA.map(d=>d.category))];if(!cats.includes(cat))cat="All";
+ $("#cats").innerHTML=cats.map(c=>`<button aria-pressed="${c===cat}" data-c="${esc(c)}">${esc(c==="All"?T("All"):c)}</button>`).join("");
+ $("#cl").innerHTML=cats.slice(1).map(c=>`<option value="${esc(c)}">`).join("")}
+function renderGrid(){const t=term.trim().toLowerCase();
+ const list=DATA.filter(d=>(cat==="All"||d.category===cat)&&(!t||d.name.toLowerCase().includes(t)||(d.original_recipe||[]).some(i=>i.item.toLowerCase().includes(t))));
+ $("#grid").innerHTML=list.map(d=>`<button class="card" data-id="${esc(d.id)}">${img(d)}<div class="b"><h3>${esc(d.name)}</h3><div class="tag">${esc(d.category)}${d.price_ground_floor!=null?" · ₹"+d.price_ground_floor:""}</div><div class="times">${pending(d)?`<span>${T("Recipe pending")}</span>`:`<span>${T("Prep")} ${d.prep_time??"—"} ${T("min")}</span><span>${T("Cook")} ${d.cook_time??"—"} ${T("min")}</span>`}</div></div></button>`).join("");
+ $("#empty").hidden=list.length>0}
+function view(d){const c=d.calories,vids=getVideos(d);
+ $("#dt").textContent=d.name;$("#edit").hidden=!canEdit();
+ $("#body").innerHTML=`
+ <section>${img(d)}${d.description?`<p>${bi(d.description)}</p>`:""}</section>
+ <section><h3>${bi("Prices")}</h3><table><tbody>${TIERS.map(([k,l])=>`<tr><th scope="row">${bi(l)}</th>${rupee(d[k])}</tr>`).join("")}</tbody></table></section>
+ ${pending(d)?`<section class="fact warn"><b style="font-size:1rem">${bi("Recipe pending")}</b><span>Use "Dishes needing recipes", send the file to Claude, then "Load menu file". Or press Edit to type it in.</span></section>`:`
+ <section><h3>${bi("Ingredients (per portion)")}</h3><table><tbody>${d.original_recipe.map(i=>`<tr><td>${ingName(i.item)}</td><td class="p">${esc(i.qty)}</td></tr>`).join("")}</tbody></table></section>
+ <section><h3>${bi("Preparation SOP")}</h3><div class="facts" style="margin-bottom:12px"><div class="fact"><b>${d.prep_time??"—"} ${T("min")}</b><span>${bi("Prep (mise en place)")}</span></div><div class="fact"><b>${d.cook_time??"—"} ${T("min")}</b><span>${bi("Active cook time")}</span></div></div><ol>${(d.prep_guidelines||[]).map(x=>`<li>${bi(x)}</li>`).join("")}</ol></section>
+ ${c?`<section><h3>${bi("Nutrition")}</h3><div class="facts"><div class="fact"><b>${c.kcal}</b><span>${T("kcal")}</span></div><div class="fact"><b>${c.carbs_g} g</b><span>${T("Carbs")}</span></div><div class="fact"><b>${c.protein_g} g</b><span>${T("Protein")}</span></div><div class="fact"><b>${c.fat_g} g</b><span>${T("Fat")}</span></div></div><p class="tag">${esc(c.note||"")}</p></section>`:""}
+ <section><h3>${bi("Storage and shelf life")}</h3><div class="facts"><div class="fact warn"><b>${bi(d.shelf_life||"—")}</b><span>${bi("Shelf life")}</span></div><div class="fact warn"><b style="font-size:1rem">${bi(d.storage_conditions||"—")}</b><span>${bi("Hold / store")}</span></div></div></section>`}
+ <section><h3>${bi("Training video")}</h3>${vids.length?vids.map(v=>{const e=ytEmbed(v.url);return `<div class="vb"><h4>${esc(v.label)}</h4>${e?`<iframe class="vid" src="${esc(e)}" title="${esc(d.name)} · ${esc(v.label)}" allowfullscreen loading="lazy"></iframe>`:""}<p><a class="btn" href="${esc(v.url)}" target="_blank" rel="noopener">${T("Open video")}</a></p></div>`}).join(""):`<p class="tag">${bi("No video added. Press Edit to paste a link.")}</p>`}</section>`}
+
+/* editor */
+const fld=(n,l,v,t="text",x="")=>`<label>${l}<input name="${n}" type="${t}" ${t==="number"?'step="any" inputmode="decimal"':""} value="${esc(v??"")}" ${x}></label>`;
+function edit(d,isNew){if(!canEdit())return;const c=d.calories||{};
+ $("#dt").textContent=isNew?"Add dish":"Edit "+d.name;$("#edit").hidden=true;
+ $("#body").innerHTML=`<form id="f" data-id="${esc(d.id)}" data-new="${isNew?1:0}" class="form">
+ ${fld("name","Dish name",d.name,"text","required")}
+ ${fld("category","Category",d.category,"text",'list="cl" required')}
+ <label>Description<textarea name="description" rows="3">${esc(d.description)}</textarea></label>
+ <fieldset><legend>Prices (₹). Leave blank if not applicable.</legend><div class="g2">${TIERS.map(([k,l])=>fld(k,l,d[k],"number")).join("")}</div></fieldset>
+ <fieldset><legend>Picture and video</legend>
+  <div class="ph" id="pv" style="max-width:260px">${d.image_url?`<img src="${esc(d.image_url)}" alt="">`:`<span>${esc(d.name[0]||"?")}</span>`}</div>
+  <label>Upload picture<input type="file" id="pic" accept="image/*"></label>
+  <input type="hidden" name="image_url" value="${esc(d.image_url)}">
+  <label>Video links, one per line as: Label | URL (or just the URL). Add as many as you like.<textarea name="videos" rows="4">${esc(getVideos(d).map(v=>v.label+" | "+v.url).join("\n"))}</textarea></label></fieldset>
+ <fieldset><legend>Recipe</legend>
+  <label>Ingredients, one per line as: item | quantity<textarea name="ing" rows="6">${esc((d.original_recipe||[]).map(i=>i.item+" | "+i.qty).join("\n"))}</textarea></label>
+  <label>Preparation steps, one per line<textarea name="steps" rows="6">${esc((d.prep_guidelines||[]).join("\n"))}</textarea></label>
+  <div class="g2">${fld("prep_time","Prep time (min)",d.prep_time,"number")}${fld("cook_time","Cook time (min)",d.cook_time,"number")}
+  ${fld("kcal","Calories (kcal)",c.kcal,"number")}${fld("carbs_g","Carbs (g)",c.carbs_g,"number")}${fld("protein_g","Protein (g)",c.protein_g,"number")}${fld("fat_g","Fat (g)",c.fat_g,"number")}</div>
+  ${fld("cnote","Nutrition note",c.note)}${fld("shelf_life","Shelf life",d.shelf_life)}${fld("storage_conditions","Storage conditions",d.storage_conditions)}</fieldset>
+ <div class="acts"><button class="btn" type="submit">Save dish</button><button type="button" id="cancel">Cancel</button>${isNew?"":'<button type="button" id="del" class="danger">Delete dish</button>'}</div></form>`}
+function saveForm(f){if(!canEdit())return;const g=n=>f.elements[n].value.trim(),isNew=f.dataset.new==="1";
+ let d=isNew?blank(g("name")):DATA.find(x=>x.id===f.dataset.id);d.id=isNew?d.id:f.dataset.id;
+ Object.assign(d,{name:g("name"),category:g("category")||"Uncategorised",description:g("description"),image_url:g("image_url"),shelf_life:g("shelf_life"),storage_conditions:g("storage_conditions"),prep_time:num(g("prep_time")),cook_time:num(g("cook_time"))});
+ TIERS.forEach(([k])=>d[k]=num(g(k)));
+ d.video_urls=g("videos").split("\n").map(l=>l.trim()).filter(Boolean).map((l,i)=>{const j=l.lastIndexOf("|"),u=(j<0?l:l.slice(j+1)).trim(),lb=j<0?"":l.slice(0,j).trim();return{label:lb||"Video "+(i+1),url:u}}).filter(v=>/^https?:\/\//.test(v.url));
+ d.youtube_reference_url=d.video_urls[0]?d.video_urls[0].url:"";
+ d.original_recipe=g("ing").split("\n").map(l=>l.trim()).filter(Boolean).map(l=>{const [a,...b]=l.split("|");return{item:a.trim(),qty:b.join("|").trim()}});
+ d.prep_guidelines=g("steps").split("\n").map(l=>l.trim()).filter(Boolean);
+ d.calories=g("kcal")===""?null:{kcal:num(g("kcal")),carbs_g:num(g("carbs_g")),protein_g:num(g("protein_g")),fat_g:num(g("fat_g")),note:g("cnote")};
+ if(isNew)DATA.push(d);changed(`Saved "${d.name}".`);view(d)}
+
+/* events */
+let cur=null;
+function open(id){cur=DATA.find(x=>x.id===id);if(!cur)return;view(cur);$("#dlg").showModal();$("#dlg").scrollTop=0}
+$("#q").addEventListener("input",e=>{term=e.target.value;renderGrid()});
+$("#cats").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;renderCats();renderGrid()});
+$("#grid").addEventListener("click",e=>{const b=e.target.closest(".card");if(b)open(b.dataset.id)});
+$("#close").addEventListener("click",()=>$("#dlg").close());
+$("#edit").addEventListener("click",()=>edit(cur,false));
+$("#dlg").addEventListener("click",e=>{if(e.target===$("#dlg"))$("#dlg").close()});
+$("#body").addEventListener("submit",e=>{e.preventDefault();saveForm(e.target)});
+$("#body").addEventListener("click",e=>{
+ if(e.target.id==="cancel"){cur&&DATA.includes(cur)?view(cur):$("#dlg").close()}
+ if(e.target.id==="del"&&canEdit()&&confirm("Delete this dish?")){DATA=DATA.filter(x=>x!==cur);$("#dlg").close();changed("Dish deleted.")}});
+$("#body").addEventListener("change",async e=>{if(e.target.id!=="pic"||!e.target.files[0])return;
+ const u=await toDataUrl(e.target.files[0]);document.querySelector('[name=image_url]').value=u;$("#pv").innerHTML=`<img src="${u}" alt="">`});
+$("#b-xlsx").onclick=()=>$("#f-xlsx").click();$("#f-xlsx").onchange=e=>{if(e.target.files[0])importXlsx(e.target.files[0]);e.target.value=""};
+$("#b-tpl").onclick=template;
+$("#b-add").onclick=()=>{if(!canEdit())return;cur=blank("");edit(cur,true);$("#dlg").showModal()};
+$("#b-save").onclick=()=>{download("recipes.json",DATA.map(d=>d.image_url&&d.image_url.startsWith("data:")?{...d,image_url:"assets/images/"+slug(d.name)+".jpg"}:d));note("Saved. Uploaded photos are referenced as assets/images/<dish-name>.jpg. Use Photos ZIP and commit them to the repository too.")};
+$("#b-pics").onclick=()=>$("#f-pics").click();
+$("#f-pics").onchange=async e=>{const fs=[...e.target.files];e.target.value="";let ok=0,miss=[];
+ for(const f of fs){const b=norm(f.name.replace(/\.[^.]+$/,""));let m=DATA.filter(d=>norm(d.name)===b);
+  if(!m.length&&b.length>=4)m=DATA.filter(d=>{const n=norm(d.name);return n.includes(b)||b.includes(n)});
+  if(m.length===1){m[0].image_url=await toDataUrl(f);ok++}else miss.push(f.name)}
+ changed(`Photos: ${ok} matched${miss.length?`, ${miss.length} not matched: ${miss.slice(0,6).join(", ")}${miss.length>6?"…":""}`:""}. Name each file like the dish, e.g. masala-dosa.jpg.`)};
+$("#b-zip").onclick=async()=>{const z=new JSZip();let n=0;DATA.forEach(d=>{if(d.image_url&&d.image_url.startsWith("data:")){z.file("assets/images/"+slug(d.name)+".jpg",d.image_url.split(",")[1],{base64:true});n++}});
+ if(!n){note("No uploaded photos to export.");return}
+ const a=document.createElement("a");a.href=URL.createObjectURL(await z.generateAsync({type:"blob"}));a.download="dish-photos.zip";a.click();note(n+" photos zipped. Unzip into the repository folder and commit.")};
+$("#lang").onchange=e=>loadLang(e.target.value);
+$("#b-load").onclick=()=>$("#f-json").click();$("#f-json").onchange=e=>{if(e.target.files[0])loadJson(e.target.files[0]);e.target.value=""};
+$("#b-pend").onclick=()=>{const p=DATA.filter(pending).map(({id,name,category})=>({id,name,category}));p.length?(download("dishes-needing-recipes.json",p),note(`${p.length} dishes exported. Send the file to Claude.`)):note("Every dish already has a recipe.")};
+$("#b-reset").onclick=async()=>{if(confirm("Discard all changes in this browser and reload recipes.json?")){await DB.set(null);location.reload()}};
+
+/* ===== access control and Google Drive sync =====
+   Data in Drive is AES-GCM encrypted. Each user has the data key wrapped with their own password (PBKDF2).
+   Only the Google account that created the file can write to it, so viewers cannot change anything. */
+const enc=new TextEncoder(),dec=new TextDecoder(),C=()=>window.CFG||{},GD="https://www.googleapis.com/drive/v3/files/";
+const b64=u=>{u=new Uint8Array(u);let t="";for(let i=0;i<u.length;i+=32768)t+=String.fromCharCode.apply(null,u.subarray(i,i+32768));return btoa(t)};
+const ub=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0)),rnd=n=>crypto.getRandomValues(new Uint8Array(n));
+async function pkey(pw,salt){const m=await crypto.subtle.importKey("raw",enc.encode(pw),"PBKDF2",false,["deriveKey"]);return crypto.subtle.deriveKey({name:"PBKDF2",salt,iterations:250000,hash:"SHA-256"},m,{name:"AES-GCM",length:256},false,["encrypt","decrypt"])}
+async function seal(key,bytes){const iv=rnd(12);return{iv:b64(iv),ct:b64(await crypto.subtle.encrypt({name:"AES-GCM",iv},key,bytes))}}
+async function unseal(key,o){return new Uint8Array(await crypto.subtle.decrypt({name:"AES-GCM",iv:ub(o.iv)},key,ub(o.ct)))}
+let ENV=null,KR=null,DK=null,TOKEN=null,LASTMT=null,pushT=null,pollT=null;
+const dkey=()=>crypto.subtle.importKey("raw",KR,"AES-GCM",false,["encrypt","decrypt"]);
+const slim=d=>d.image_url&&d.image_url.startsWith("data:")?{...d,image_url:"assets/images/"+slug(d.name)+".jpg"}:d;
+async function wrap(pw,role){const salt=rnd(16),o=await seal(await pkey(pw,salt),KR);return{salt:b64(salt),iv:o.iv,ct:o.ct,role}}
+async function unlock(name,pw){const u=ENV.users[name.toLowerCase()];if(!u)throw 0;KR=await unseal(await pkey(pw,ub(u.salt)),u);DK=await dkey();ROLE=u.role;DATA=JSON.parse(dec.decode(await unseal(DK,ENV.data)))}
+async function fetchEnv(){const r=await fetch(`${GD}${C().FILE_ID}?alt=media&key=${C().API_KEY}`,{cache:"no-store"});if(!r.ok)throw new Error("Could not read the shared file ("+r.status+")");ENV=await r.json()}
+function getToken(pr){return new Promise((ok,no)=>{google.accounts.oauth2.initTokenClient({client_id:C().CLIENT_ID,scope:"https://www.googleapis.com/auth/drive.file",callback:r=>r.access_token?ok(r.access_token):no(new Error(r.error||"Google sign-in failed")),error_callback:e=>no(new Error(e.type||"Google sign-in cancelled"))}).requestAccessToken({prompt:pr})})}
+async function gfetch(url,opt={}){for(let t=0;t<2;t++){const r=await fetch(url,{...opt,headers:{...(opt.headers||{}),Authorization:"Bearer "+TOKEN}});if(r.status!==401)return r;TOKEN=await getToken("")}throw new Error("Google sign-in expired")}
+async function push(){ENV.data=await seal(DK,enc.encode(JSON.stringify(DATA.map(slim))));ENV.rev=Date.now();
+ const r=await gfetch(`https://www.googleapis.com/upload/drive/v3/files/${C().FILE_ID}?uploadType=media`,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify(ENV)});
+ if(!r.ok)throw new Error("Drive save failed ("+r.status+")");note("Synced to Drive at "+new Date().toLocaleTimeString())}
+function schedPush(){clearTimeout(pushT);note("Saving to Drive…");pushT=setTimeout(()=>push().catch(e=>note(e.message+". It will retry on the next change.")),1500)}
+async function setup(pw){KR=rnd(32);DK=await dkey();ROLE="admin";ENV={v:1,users:{admin:await wrap(pw,"admin")}};
+ let r=await gfetch("https://www.googleapis.com/drive/v3/files",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:"joshis-kitchen-data.json",mimeType:"application/json"})});
+ if(!r.ok)throw new Error("Could not create the Drive file ("+r.status+")");const id=(await r.json()).id;C().FILE_ID=id;
+ r=await gfetch(`${GD}${id}/permissions`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({role:"reader",type:"anyone"})});
+ if(!r.ok)throw new Error("Could not share the file ("+r.status+")");await push();return id}
+function enter(){$("#auth").close();const B=document.body.classList;B.remove("locked");B.toggle("viewer",ROLE!=="admin");B.toggle("admin",ROLE==="admin");$("#so").hidden=false;renderCats();renderGrid();
+ fetch(`${GD}${C().FILE_ID}?fields=modifiedTime&key=${C().API_KEY}`).then(r=>r.json()).then(m=>LASTMT=m.modifiedTime).catch(()=>{});
+ clearInterval(pollT);pollT=setInterval(async()=>{if(document.hidden||ROLE==="admin"||document.querySelector("#f"))return;
+  try{const m=await(await fetch(`${GD}${C().FILE_ID}?fields=modifiedTime&key=${C().API_KEY}`)).json();
+   if(LASTMT&&m.modifiedTime!==LASTMT){await fetchEnv();DATA=JSON.parse(dec.decode(await unseal(DK,ENV.data)));renderCats();renderGrid();
+    if($("#dlg").open&&cur){cur=DATA.find(x=>x.id===cur.id);cur?view(cur):$("#dlg").close()}note("Menu updated at "+new Date().toLocaleTimeString())}
+   LASTMT=m.modifiedTime}catch(e){}},30000)}
+async function login(u,p,viaGoogle){const er=$("#aerr");er.textContent="Checking…";
+ try{if(!ENV)await fetchEnv();await unlock(u,p);if(ROLE==="admin"){if(viaGoogle)ADMPW=p;else ROLE="viewer"}enter()}
+ catch(e){er.textContent=e&&e.message?e.message:"Wrong username or password."}}
+$("#af").addEventListener("submit",e=>{e.preventDefault();if(MODE==="setup"){$("#aerr").textContent="First-time setup: use the Google button.";return}login(e.target.u.value.trim(),e.target.p.value,false)});
+$("#g-admin").onclick=async()=>{const p=$("#af").p.value,er=$("#aerr");
+ if(p.length<8){er.textContent="Type the admin passphrase (8+ characters) first, then press this button.";return}
+ try{er.textContent="Opening Google…";TOKEN=await getToken("select_account");
+  if(MODE==="setup"){er.textContent="Creating the secure Drive file…";const id=await setup(p);ADMPW=p;MODE="gated";enter();
+   window.prompt("Setup complete. Copy this File ID into config.js as FILE_ID, then commit config.js to GitHub:",id)}
+  else{if(!ENV)await fetchEnv();await login("admin",p,true)}}
+ catch(e){er.textContent=e.message||"Sign-in failed."}};
+$("#so").onclick=()=>location.reload();
+$("#auth").addEventListener("cancel",e=>e.preventDefault());
+const ulist=()=>{$("#ul").innerHTML=Object.entries(ENV.users).map(([n,u])=>`<div class="fact">${esc(n)} <span class="tag">${esc(u.role)}</span> ${u.role==="viewer"?`<button data-rm="${esc(n)}">Remove</button>`:""}</div>`).join("")};
+$("#b-users").onclick=()=>{ulist();$("#um").textContent="";$("#ud").showModal()};
+$("#ud-x").onclick=()=>$("#ud").close();
+$("#uf").addEventListener("submit",async e=>{e.preventDefault();const n=e.target.n.value.trim().toLowerCase(),p=e.target.p.value;
+ if(ENV.users[n]){$("#um").textContent="That username already exists.";return}
+ try{ENV.users[n]=await wrap(p,"viewer");await push();e.target.reset();ulist();$("#um").textContent="Viewer created. Give them the username and password."}catch(x){delete ENV.users[n];$("#um").textContent=x.message}});
+$("#ul").addEventListener("click",async e=>{const n=e.target.dataset.rm;if(n&&confirm("Remove viewer "+n+"?")){delete ENV.users[n];try{await push();ulist()}catch(x){$("#um").textContent=x.message}}});
+$("#u-reset").onclick=async()=>{if(!confirm("Remove ALL viewers and create a new access key? Anyone who saved the old data keeps their copy, but can no longer see updates."))return;
+ KR=rnd(32);DK=await dkey();ENV.users={admin:await wrap(ADMPW,"admin")};try{await push();ulist();$("#um").textContent="All viewers removed."}catch(x){$("#um").textContent=x.message}};
+
+async function loadLocal(){let s=null;try{s=await DB.get()}catch(e){}
+ if(s&&s.length)DATA=s;else{try{DATA=await(await fetch("recipes.json")).json()}catch(e){note("Could not load recipes.json. Use Import Excel to start, or serve this folder over http.")}}}
+(async()=>{$("#lang").value=LANG;
+ if(C().CLIENT_ID){MODE=C().FILE_ID?"gated":"setup";document.body.classList.add("locked","gated");if(MODE==="setup")await loadLocal();await loadLang(LANG);
+  $("#a-msg").textContent=MODE==="setup"?"First-time setup: type a new admin passphrase (8+ characters), then press the Google button to create the secure Drive file.":"Sign in to view the kitchen manual.";$("#auth").showModal();return}
+ await loadLocal();await loadLang(LANG)})();
+</script>
+</body>
+</html>

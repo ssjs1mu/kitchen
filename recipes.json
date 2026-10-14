@@ -1,0 +1,413 @@
+[
+  {
+    "id": "item_001",
+    "name": "Poha",
+    "category": "Breakfast",
+    "description": "Fluffy flattened rice tossed with mustard, curry leaves and turmeric, finished with roasted peanuts, a squeeze of lemon and crisp sev. Light, warm and quick to serve.",
+    "image_url": "assets/images/poha.jpg",
+    "price_ground_floor": 155,
+    "price_mezzanine_floor": 190,
+    "price_online": null,
+    "price_ground_breakfast": 95,
+    "price_mezzanine_breakfast": 125,
+    "price_staff": null,
+    "original_recipe": [
+      {
+        "item": "Thick poha",
+        "qty": "80 g"
+      },
+      {
+        "item": "Onion, finely chopped",
+        "qty": "40 g"
+      },
+      {
+        "item": "Boiled potato, small dice",
+        "qty": "30 g"
+      },
+      {
+        "item": "Refined oil",
+        "qty": "10 ml"
+      },
+      {
+        "item": "Mustard seeds",
+        "qty": "2 g"
+      },
+      {
+        "item": "Curry leaves",
+        "qty": "4 leaves"
+      },
+      {
+        "item": "Green chilli, chopped",
+        "qty": "5 g"
+      },
+      {
+        "item": "Roasted peanuts",
+        "qty": "10 g"
+      },
+      {
+        "item": "Turmeric powder",
+        "qty": "1 g"
+      },
+      {
+        "item": "Salt",
+        "qty": "3 g"
+      },
+      {
+        "item": "Sugar",
+        "qty": "2 g"
+      },
+      {
+        "item": "Lemon juice",
+        "qty": "5 ml"
+      },
+      {
+        "item": "Fresh coriander",
+        "qty": "5 g"
+      },
+      {
+        "item": "Sev (garnish)",
+        "qty": "10 g"
+      }
+    ],
+    "prep_guidelines": [
+      "Rinse poha in a colander under cold water for 20 seconds. Drain and rest 5 minutes with salt, sugar and turmeric until soft but not mushy.",
+      "Heat oil on medium flame. Add mustard seeds and let them crackle.",
+      "Add curry leaves, green chilli and peanuts; sauté 30 seconds.",
+      "Add onion and potato; cook 2 minutes until translucent.",
+      "Fold in the rested poha gently. Do not stir hard or it will break.",
+      "Cover and steam on low flame for 2 minutes.",
+      "Finish with lemon juice and coriander. Plate and top with sev just before serving."
+    ],
+    "prep_time": 8,
+    "cook_time": 7,
+    "calories": {
+      "kcal": 380,
+      "carbs_g": 58,
+      "protein_g": 8,
+      "fat_g": 13,
+      "note": "Estimate per portion (about 250 g)"
+    },
+    "shelf_life": "2 hours (hot-held)",
+    "storage_conditions": "Hot bain-marie above 65°C, covered. Add sev only at plating.",
+    "youtube_reference_url": "https://www.youtube.com/results?search_query=kanda+poha+recipe",
+    "video_urls": [
+      {
+        "label": "YouTube search: recipe (English)",
+        "url": "https://www.youtube.com/results?search_query=poha+recipe"
+      },
+      {
+        "label": "YouTube search: recipe in Hindi",
+        "url": "https://www.youtube.com/results?search_query=poha+recipe+in+hindi"
+      },
+      {
+        "label": "YouTube search: recipe in Bengali",
+        "url": "https://www.youtube.com/results?search_query=poha+recipe+in+bengali"
+      }
+    ]
+  },
+  {
+    "id": "item_002",
+    "name": "Masala Dosa",
+    "category": "Breakfast",
+    "description": "A golden, crackling-crisp fermented rice-and-lentil crepe folded around spiced potato masala, served with sambar and coconut chutney.",
+    "image_url": "assets/images/masala-dosa.jpg",
+    "price_ground_floor": 135,
+    "price_mezzanine_floor": 205,
+    "price_online": null,
+    "price_ground_breakfast": null,
+    "price_mezzanine_breakfast": null,
+    "price_staff": null,
+    "original_recipe": [
+      {
+        "item": "Dosa batter (fermented)",
+        "qty": "120 ml"
+      },
+      {
+        "item": "Oil or ghee for the tava",
+        "qty": "8 ml"
+      },
+      {
+        "item": "Boiled potato, hand-crushed",
+        "qty": "100 g"
+      },
+      {
+        "item": "Onion, sliced",
+        "qty": "30 g"
+      },
+      {
+        "item": "Oil for masala",
+        "qty": "8 ml"
+      },
+      {
+        "item": "Mustard seeds",
+        "qty": "1 g"
+      },
+      {
+        "item": "Curry leaves",
+        "qty": "3 leaves"
+      },
+      {
+        "item": "Green chilli and ginger, minced",
+        "qty": "5 g"
+      },
+      {
+        "item": "Turmeric powder",
+        "qty": "1 g"
+      },
+      {
+        "item": "Salt",
+        "qty": "2 g"
+      },
+      {
+        "item": "Sambar",
+        "qty": "80 ml"
+      },
+      {
+        "item": "Coconut chutney",
+        "qty": "40 g"
+      }
+    ],
+    "prep_guidelines": [
+      "Make the potato masala in advance: temper mustard and curry leaves in oil, add chilli, ginger and onion, cook until soft.",
+      "Add turmeric, salt and crushed potato. Mix and splash a little water. Keep hot.",
+      "Heat the tava until a water drop dances and evaporates. Wipe lightly with oil.",
+      "Pour batter in the centre and spiral outward into a thin round.",
+      "Drizzle oil or ghee around the edge. Cook until golden and crisp, without flipping.",
+      "Spread 100 g of masala down the centre and fold.",
+      "Plate immediately with hot sambar and chilled chutney."
+    ],
+    "prep_time": 10,
+    "cook_time": 6,
+    "calories": {
+      "kcal": 420,
+      "carbs_g": 65,
+      "protein_g": 9,
+      "fat_g": 14,
+      "note": "Estimate per dosa with masala, excluding sambar and chutney"
+    },
+    "shelf_life": "Potato masala 4 hours hot-held; batter 48 hours chilled; assembled dosa serve within 5 minutes",
+    "storage_conditions": "Masala in hot bain-marie above 65°C. Batter in chiller at 2–4°C, covered.",
+    "youtube_reference_url": "https://www.youtube.com/results?search_query=masala+dosa+recipe+restaurant+style",
+    "video_urls": [
+      {
+        "label": "YouTube search: recipe (English)",
+        "url": "https://www.youtube.com/results?search_query=masala+dosa+recipe"
+      },
+      {
+        "label": "YouTube search: recipe in Hindi",
+        "url": "https://www.youtube.com/results?search_query=masala+dosa+recipe+in+hindi"
+      },
+      {
+        "label": "YouTube search: recipe in Bengali",
+        "url": "https://www.youtube.com/results?search_query=masala+dosa+recipe+in+bengali"
+      }
+    ]
+  },
+  {
+    "id": "item_003",
+    "name": "Paneer Butter Masala",
+    "category": "Main Course",
+    "description": "Soft paneer cubes in a velvety tomato-cashew gravy, enriched with butter and cream, finished with the smoky aroma of kasuri methi.",
+    "image_url": "assets/images/paneer-butter-masala.jpg",
+    "price_ground_floor": 235,
+    "price_mezzanine_floor": 355,
+    "price_online": null,
+    "price_ground_breakfast": null,
+    "price_mezzanine_breakfast": null,
+    "price_staff": null,
+    "original_recipe": [
+      {
+        "item": "Paneer, 20 mm cubes",
+        "qty": "100 g"
+      },
+      {
+        "item": "Ripe tomatoes, chopped",
+        "qty": "150 g"
+      },
+      {
+        "item": "Cashew nuts",
+        "qty": "15 g"
+      },
+      {
+        "item": "Butter",
+        "qty": "15 g"
+      },
+      {
+        "item": "Fresh cream",
+        "qty": "20 ml"
+      },
+      {
+        "item": "Oil",
+        "qty": "5 ml"
+      },
+      {
+        "item": "Ginger paste",
+        "qty": "5 g"
+      },
+      {
+        "item": "Kashmiri chilli powder",
+        "qty": "3 g"
+      },
+      {
+        "item": "Garam masala",
+        "qty": "1 g"
+      },
+      {
+        "item": "Kasuri methi, crushed",
+        "qty": "1 g"
+      },
+      {
+        "item": "Sugar",
+        "qty": "3 g"
+      },
+      {
+        "item": "Salt",
+        "qty": "3 g"
+      },
+      {
+        "item": "Water",
+        "qty": "60 ml"
+      }
+    ],
+    "prep_guidelines": [
+      "Base gravy: simmer tomatoes, cashews, ginger and water for 12 minutes until soft. Blend smooth and strain.",
+      "Heat oil and half the butter. Add the puree and chilli powder; cook 5 minutes until the oil separates.",
+      "Season with salt and sugar. Simmer 3 minutes to balance acidity.",
+      "Add paneer cubes and cook gently for 2 minutes. Do not boil hard.",
+      "Stir in cream, garam masala and crushed kasuri methi. Remove from heat.",
+      "Finish with the remaining butter. Plate with a swirl of cream."
+    ],
+    "prep_time": 15,
+    "cook_time": 22,
+    "calories": {
+      "kcal": 475,
+      "carbs_g": 14,
+      "protein_g": 19,
+      "fat_g": 38,
+      "note": "Estimate per portion (about 250 g)"
+    },
+    "shelf_life": "Base gravy 48 hours chilled; finished dish 4 hours hot-held",
+    "storage_conditions": "Base gravy in chiller at 2–4°C, airtight. Finished dish in hot bain-marie above 65°C. Add cream at service.",
+    "youtube_reference_url": "https://www.youtube.com/results?search_query=paneer+butter+masala+restaurant+style",
+    "video_urls": [
+      {
+        "label": "YouTube search: recipe (English)",
+        "url": "https://www.youtube.com/results?search_query=paneer+butter+masala+recipe"
+      },
+      {
+        "label": "YouTube search: recipe in Hindi",
+        "url": "https://www.youtube.com/results?search_query=paneer+butter+masala+recipe+in+hindi"
+      },
+      {
+        "label": "YouTube search: recipe in Bengali",
+        "url": "https://www.youtube.com/results?search_query=paneer+butter+masala+recipe+in+bengali"
+      }
+    ]
+  },
+  {
+    "id": "item_004",
+    "name": "Honey Chilli Potato",
+    "category": "Starters",
+    "description": "Crisp-fried potato batons tossed in a sticky sweet, tangy and spicy glaze with garlic, capsicum and toasted sesame.",
+    "image_url": "assets/images/honey-chilli-potato.jpg",
+    "price_ground_floor": 155,
+    "price_mezzanine_floor": 235,
+    "price_online": null,
+    "price_ground_breakfast": null,
+    "price_mezzanine_breakfast": null,
+    "price_staff": null,
+    "original_recipe": [
+      {
+        "item": "Potato, finger-cut",
+        "qty": "150 g"
+      },
+      {
+        "item": "Cornflour",
+        "qty": "25 g"
+      },
+      {
+        "item": "Oil for deep frying (about 15 ml absorbed)",
+        "qty": "300 ml"
+      },
+      {
+        "item": "Garlic, minced",
+        "qty": "8 g"
+      },
+      {
+        "item": "Ginger, minced",
+        "qty": "4 g"
+      },
+      {
+        "item": "Spring onion whites and greens",
+        "qty": "20 g"
+      },
+      {
+        "item": "Capsicum, diced",
+        "qty": "20 g"
+      },
+      {
+        "item": "Soy sauce",
+        "qty": "10 ml"
+      },
+      {
+        "item": "Red chilli sauce",
+        "qty": "15 ml"
+      },
+      {
+        "item": "Tomato ketchup",
+        "qty": "15 ml"
+      },
+      {
+        "item": "Honey",
+        "qty": "15 ml"
+      },
+      {
+        "item": "Vinegar",
+        "qty": "5 ml"
+      },
+      {
+        "item": "Sesame seeds, toasted",
+        "qty": "3 g"
+      },
+      {
+        "item": "Salt",
+        "qty": "2 g"
+      }
+    ],
+    "prep_guidelines": [
+      "Soak cut potato in cold water for 15 minutes. Drain and pat fully dry.",
+      "Toss with salt and cornflour until evenly coated.",
+      "Fry at 170°C for 4 minutes, rest 2 minutes, then refry at 190°C for 2 minutes until crisp. Drain.",
+      "In a hot wok with 5 ml oil, sauté garlic, ginger and capsicum for 30 seconds.",
+      "Add soy, chilli sauce, ketchup, honey and vinegar. Reduce 30 seconds until glossy.",
+      "Toss in the fried potato quickly to coat. Finish with spring onion and sesame.",
+      "Serve at once, as the coating softens within minutes."
+    ],
+    "prep_time": 20,
+    "cook_time": 12,
+    "calories": {
+      "kcal": 360,
+      "carbs_g": 52,
+      "protein_g": 4,
+      "fat_g": 15,
+      "note": "Estimate per portion (about 200 g)"
+    },
+    "shelf_life": "Sauced dish: serve within 10 minutes. Par-fried potato 2 hours. Sauce mix 3 days chilled.",
+    "storage_conditions": "Par-fried potato at room temperature on a draining rack, uncovered. Sauce mix in chiller at 2–4°C, airtight.",
+    "youtube_reference_url": "https://www.youtube.com/results?search_query=honey+chilli+potato+recipe",
+    "video_urls": [
+      {
+        "label": "YouTube search: recipe (English)",
+        "url": "https://www.youtube.com/results?search_query=honey+chilli+potato+recipe"
+      },
+      {
+        "label": "YouTube search: recipe in Hindi",
+        "url": "https://www.youtube.com/results?search_query=honey+chilli+potato+recipe+in+hindi"
+      },
+      {
+        "label": "YouTube search: recipe in Bengali",
+        "url": "https://www.youtube.com/results?search_query=honey+chilli+potato+recipe+in+bengali"
+      }
+    ]
+  }
+]
